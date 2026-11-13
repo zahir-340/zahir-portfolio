@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Zahir | Developer & Program Designer</title>
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e1b4b, #090d16);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #6366f1, #ec4899);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .bio {
+            font-size: 14.5px;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #e2e8f0;
+        }
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+            padding: 14px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        .tiktok {
+            background: linear-gradient(90deg, #000000, #25F4EE, #FE2C55);
+            background-size: 200% auto;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="avatar">MZ</div>
+        <h1>Mohamed Zahir</h1>
+        <div class="badge">Developer • Program Designer</div>
+        <p class="bio">
+            Passionate about building smart digital solutions, cloud infrastructure, Linux automation, and modern web applications.
+        </p>
+        <div class="skills">
+            <span class="skill-tag">Software Dev</span>
+            <span class="skill-tag">Program Design</span>
+            <span class="skill-tag">Linux & Cloud</span>
+            <span class="skill-tag">Networking</span>
+        </div>
+        <div class="social-links">
+            <a href="tiktok.com/@mhdzahir112" target="_blank" class="btn tiktok">
+                <i class="fab fa-tiktok"></i> Follow on TikTok
+            </a>
+            <a href="https://www.instagram.com/mhdzahir340?mdxt=aWw4a3UxaWwzNXNm" target="_blank" class="btn instagram">
+                <i class="fab fa-instagram"></i> Follow on Instagram
+            </a>
+        </div>
+        <footer>© 2026 Mohamed Zahir. All Rights Reserved.</footer>
+    </div>
+</body>
+</html>
