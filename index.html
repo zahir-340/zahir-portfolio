@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Zahir | Developer & Program Designer</title>
+    <title>Mohamed Zahir | Developer & Digital Services</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * {
@@ -11,48 +11,58 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
         body {
-            background: linear-gradient(135deg, #0f172a, #1e1b4b, #090d16);
+            background: linear-gradient(135deg, #090d16, #13112b, #0f172a);
             color: #ffffff;
             min-height: 100vh;
+            padding: 30px 15px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 20px;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 40px 30px;
-            max-width: 420px;
+        .container {
+            max-width: 560px;
             width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
             animation: fadeIn 1s ease-in-out;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .avatar {
-            width: 110px;
-            height: 110px;
+        .glass-box {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 28px 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        .header-box {
+            text-align: center;
+        }
+        .avatar-wrapper {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #6366f1, #ec4899);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
-            font-weight: bold;
-            color: white;
+            padding: 4px;
+            background: linear-gradient(45deg, #6366f1, #ec4899, #25F4EE);
             box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
         }
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background-color: #1e1b4b;
+        }
         h1 {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
@@ -62,31 +72,78 @@
             background: rgba(99, 102, 241, 0.2);
             color: #a5b4fc;
             border: 1px solid rgba(99, 102, 241, 0.4);
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 50px;
             font-size: 13px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
         .bio {
             font-size: 14.5px;
             color: #cbd5e1;
             line-height: 1.6;
-            margin-bottom: 25px;
         }
-        .skills {
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f8fafc;
+            margin-bottom: 16px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 30px;
+            align-items: center;
+            gap: 10px;
         }
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 12px;
+        .section-title i {
+            color: #818cf8;
+        }
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        @media (max-width: 480px) {
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        .service-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border: 1px solid rgba(99, 102, 241, 0.25);
+            padding: 18px;
+            border-radius: 18px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: #ec4899;
+        }
+        .service-card h3 {
+            font-size: 15.5px;
+            color: #f8fafc;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-card p {
+            font-size: 12.5px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        .mini-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px;
+            border-radius: 16px;
+        }
+        .mini-card h3 {
+            font-size: 15px;
             color: #e2e8f0;
+            margin-bottom: 6px;
+        }
+        .mini-card p {
+            font-size: 12.5px;
+            color: #94a3b8;
+            line-height: 1.5;
         }
         .social-links {
             display: flex;
@@ -100,7 +157,7 @@
             gap: 10px;
             text-decoration: none;
             color: white;
-            padding: 14px;
+            padding: 15px;
             border-radius: 14px;
             font-weight: 600;
             font-size: 15px;
@@ -108,44 +165,103 @@
         }
         .btn:hover {
             transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
         .tiktok {
-            background: linear-gradient(90deg, #000000, #25F4EE, #FE2C55);
+            background: linear-gradient(90deg, #0f0f0f, #25F4EE, #FE2C55);
             background-size: 200% auto;
             border: 1px solid rgba(255,255,255,0.2);
         }
         .instagram {
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
+        .github {
+            background: #24292e;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
         footer {
-            margin-top: 25px;
-            font-size: 12px;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12.5px;
             color: #64748b;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="avatar">MZ</div>
-        <h1>Mohamed Zahir</h1>
-        <div class="badge">Developer • Program Designer</div>
-        <p class="bio">
-            Passionate about building smart digital solutions, cloud infrastructure, Linux automation, and modern web applications.
-        </p>
-        <div class="skills">
-            <span class="skill-tag">Software Dev</span>
-            <span class="skill-tag">Program Design</span>
-            <span class="skill-tag">Linux & Cloud</span>
-            <span class="skill-tag">Networking</span>
+    <div class="container">
+        <!-- Profile Header -->
+        <div class="glass-box header-box">
+            <div class="avatar-wrapper">
+                <img src="profile.jpg" alt="Mohamed Zahir" class="avatar-img" onerror="this.src='https://ui-avatars.com'">
+            </div>
+            <h1>Mohamed Zahir</h1>
+            <div class="badge">Developer • Program Designer</div>
+            <p class="bio">
+                Welcome to my official space! I'm Mohamed Zahir from Sri Lanka—a passionate Developer, Program Designer, and trusted provider of high-speed digital & gaming services.
+            </p>
         </div>
-        <div class="social-links">
-            <a href="https://www.tiktok.com/@mhdzahir112" target="_blank" class="btn tiktok">
-                <i class="fab fa-tiktok"></i> Follow on TikTok
-            </a>
-            <a href="https://www.instagram.com/mhdzahir340?mdxt=aWw4a3UxaWwzNXNm" target="_blank" class="btn instagram">
-                <i class="fab fa-instagram"></i> Follow on Instagram
-            </a>
+
+        <!-- Digital Services Section -->
+        <div class="glass-box">
+            <div class="section-title"><i class="fas fa-store"></i> My Digital Services</div>
+            <div class="grid-cards">
+                <div class="service-card">
+                    <h3>🛡️ Premium VPN Service</h3>
+                    <p>High-speed, low-ping private servers for seamless browsing, streaming, and gaming.</p>
+                </div>
+                <div class="service-card">
+                    <h3>💎 Free Fire Top-Up</h3>
+                    <p>Instant & safe Diamond top-ups and memberships directly via Player UID (SG Server).</p>
+                </div>
+                <div class="service-card">
+                    <h3>👍 FF UID Likes Service</h3>
+                    <p>Boost your Free Fire profile likes safely with daily auto-delivery. No password needed!</p>
+                </div>
+                <div class="service-card">
+                    <h3>🚀 Social Media Boosting</h3>
+                    <p>Grow your TikTok & Instagram with real-looking followers & likes (30-Day Refill Warranty).</p>
+                </div>
+            </div>
         </div>
+
+        <!-- Tech Expertise Section -->
+        <div class="glass-box">
+            <div class="section-title"><i class="fas fa-laptop-code"></i> Developer & Tech Expertise</div>
+            <div class="grid-cards">
+                <div class="mini-card">
+                    <h3>⚙️ Program Design</h3>
+                    <p>Building automated scripts, Telegram bots, and smart software solutions.</p>
+                </div>
+                <div class="mini-card">
+                    <h3>☁️ Cloud & Linux</h3>
+                    <p>Managing secure Linux servers, custom domains, and encrypted network protocols.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & Social Links Section -->
+        <div class="glass-box">
+            <div class="section-title"><i class="fas fa-paper-plane"></i> Order & Connect With Me</div>
+            <div class="social-links">
+                <a href="https://wa.me/94743820716" target="_blank" class="btn whatsapp">
+                    <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                </a>
+                <a href="https://www.tiktok.com/@mhdzahir112" target="_blank" class="btn tiktok">
+                    <i class="fab fa-tiktok"></i> Follow on TikTok
+                </a>
+                <a href="https://www.instagram.com/mhdzahir340?cplk=aWw4a3UxaWwzNXNm" target="_blank" class="btn instagram">
+                    <i class="fab fa-instagram"></i> Follow on Instagram
+                </a>
+                <a href="https://github.com" target="_blank" class="btn github">
+                    <i class="fab fa-github"></i> View GitHub Profile
+                </a>
+            </div>
+        </div>
+
         <footer>© 2026 Mohamed Zahir. All Rights Reserved.</footer>
     </div>
 </body>
