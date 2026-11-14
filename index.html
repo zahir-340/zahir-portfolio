@@ -10,17 +10,16 @@
 body{background:linear-gradient(-45deg,#090d16,#13112b,#1e1b4b,#0f172a);background-size:400% 400%;animation:bgMove 12s ease infinite;color:#fff;min-height:100vh;padding:30px 15px;display:flex;justify-content:center;}
 @keyframes bgMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 .container{max-width:540px;width:100%;display:flex;flex-direction:column;gap:20px;}
-.box{background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:28px 22px;box-shadow:0 15px 35px rgba(0,0,0,0.5);opacity:0;transform:translateY(25px);transition:all 0.7s ease;}
-.box.show{opacity:1;transform:translateY(0);}
+.box{background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:28px 22px;box-shadow:0 15px 35px rgba(0,0,0,0.5);animation:popUp 0.8s ease forwards;}
+@keyframes popUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 .center{text-align:center;}
 .ring{position:relative;width:126px;height:126px;margin:0 auto 16px;display:flex;justify-content:center;align-items:center;}
 .ring::before{content:'';position:absolute;inset:0;border-radius:50%;padding:4px;background:conic-gradient(#6366f1,#ec4899,#25F4EE,#6366f1);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 4s linear infinite;}
 @keyframes spin{100%{transform:rotate(360deg);}}
 .avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;background:#1e1b4b;}
-h1{font-size:28px;margin-bottom:8px;}
-.typing-box{display:inline-block;background:rgba(99,102,241,0.2);color:#a5b4fc;border:1px solid rgba(99,102,241,0.4);padding:6px 18px;border-radius:50px;font-size:13.5px;font-weight:600;margin-bottom:16px;min-height:32px;}
-.cursor{display:inline-block;width:2px;height:14px;background:#ec4899;margin-left:3px;animation:blink 0.8s infinite;}
-@keyframes blink{50%{opacity:0;}}
+h1{font-size:28px;margin-bottom:10px;}
+.glow-badge{display:inline-block;background:linear-gradient(90deg,rgba(99,102,241,0.25),rgba(236,72,153,0.25));color:#e0e7ff;border:1px solid rgba(165,180,252,0.4);padding:7px 20px;border-radius:50px;font-size:13.5px;font-weight:600;margin-bottom:16px;box-shadow:0 0 15px rgba(99,102,241,0.3);animation:glowPulse 3s infinite alternate;}
+@keyframes glowPulse{from{box-shadow:0 0 10px rgba(99,102,241,0.3);}to{box-shadow:0 0 22px rgba(236,72,153,0.6);}}
 .bio{font-size:14px;color:#cbd5e1;line-height:1.6;}
 .title{font-size:18px;font-weight:600;margin-bottom:15px;display:flex;align-items:center;gap:10px;}
 .title i{color:#818cf8;}
@@ -43,16 +42,15 @@ footer{text-align:center;font-size:12px;color:#64748b;margin-top:5px;}
 </head>
 <body>
 <div class="container">
-  <div class="box center show">
+  <div class="box center">
     <div class="ring">
       <img src="profile.jpg" alt="Mohamed Zahir" class="avatar" onerror="this.src='https://ui-avatars.com'">
     </div>
     <h1>Mohamed Zahir</h1>
-    <div class="typing-box"><span id="type"></span><span class="cursor"></span></div>
+    <div class="glow-badge">Developer • Program Designer • Digital Services</div>
     <p class="bio">Welcome to my official space! I'm Mohamed Zahir from Sri Lanka—a passionate Developer, Program Designer, and trusted provider of high-speed digital & gaming services.</p>
   </div>
-
-  <div class="box">
+<div class="box">
     <div class="title"><i class="fas fa-store"></i> My Digital Services</div>
     <div class="grid">
       <div class="card"><h3>🛡️ Premium VPN</h3><p>High-speed, low-ping private servers for seamless browsing & gaming.</p></div>
@@ -81,25 +79,5 @@ footer{text-align:center;font-size:12px;color:#64748b;margin-top:5px;}
   </div>
   <footer>© 2026 Mohamed Zahir. All Rights Reserved.</footer>
 </div>
-
-<script>
-const words = ["Developer", "Program Designer", "Cloud & Linux Admin", "Digital Service Provider"];
-let i = 0, j = 0, isDeleting = false;
-function typeEffect() {
-  const current = words[i];
-  document.getElementById("type").textContent = current.substring(0, j);
-  if (!isDeleting && j < current.length) { j++; setTimeout(typeEffect, 100); }
-  else if (isDeleting && j > 0) { j--; setTimeout(typeEffect, 50); }
-  else { isDeleting = !isDeleting; if (!isDeleting) i = (i + 1) % words.length; setTimeout(typeEffect, 1200); }
-}
-typeEffect();
-
-const boxes = document.querySelectorAll('.box');
-window.addEventListener('scroll', () => {
-  boxes.forEach(box => {
-    if (box.getBoundingClientRect().top < window.innerHeight - 50) box.classList.add('show');
-  });
-});
-</script>
 </body>
-</html>
+</html>  
