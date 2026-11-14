@@ -3,81 +3,482 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Mohamed Zahir | Developer & Digital Services</title>
-<link rel="stylesheet" href="https://cloudflare.com">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-body{background:linear-gradient(-45deg,#090d16,#13112b,#1e1b4b,#0f172a);background-size:400% 400%;animation:bgMove 12s ease infinite;color:#fff;min-height:100vh;padding:30px 15px;display:flex;justify-content:center;}
-@keyframes bgMove{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-.container{max-width:540px;width:100%;display:flex;flex-direction:column;gap:20px;}
-.box{background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:28px 22px;box-shadow:0 15px 35px rgba(0,0,0,0.5);animation:popUp 0.8s ease forwards;}
-@keyframes popUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.center{text-align:center;}
-.ring{position:relative;width:126px;height:126px;margin:0 auto 16px;display:flex;justify-content:center;align-items:center;}
-.ring::before{content:'';position:absolute;inset:0;border-radius:50%;padding:4px;background:conic-gradient(#6366f1,#ec4899,#25F4EE,#6366f1);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 4s linear infinite;}
-@keyframes spin{100%{transform:rotate(360deg);}}
-.avatar{width:112px;height:112px;border-radius:50%;object-fit:cover;background:#1e1b4b;}
-h1{font-size:28px;margin-bottom:10px;}
-.glow-badge{display:inline-block;background:linear-gradient(90deg,rgba(99,102,241,0.25),rgba(236,72,153,0.25));color:#e0e7ff;border:1px solid rgba(165,180,252,0.4);padding:7px 20px;border-radius:50px;font-size:13.5px;font-weight:600;margin-bottom:16px;box-shadow:0 0 15px rgba(99,102,241,0.3);animation:glowPulse 3s infinite alternate;}
-@keyframes glowPulse{from{box-shadow:0 0 10px rgba(99,102,241,0.3);}to{box-shadow:0 0 22px rgba(236,72,153,0.6);}}
-.bio{font-size:14px;color:#cbd5e1;line-height:1.6;}
-.title{font-size:18px;font-weight:600;margin-bottom:15px;display:flex;align-items:center;gap:10px;}
-.title i{color:#818cf8;}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-@media(max-width:480px){.grid{grid-template-columns:1fr;}}
-.card{background:rgba(255,255,255,0.03);border:1px solid rgba(99,102,241,0.25);padding:16px;border-radius:16px;transition:transform 0.3s,border-color 0.3s;}
-.card:hover{transform:translateY(-5px);border-color:#ec4899;}
-.card h3{font-size:15px;margin-bottom:6px;}
-.card p{font-size:12.5px;color:#94a3b8;line-height:1.5;}
-.links{display:flex;flex-direction:column;gap:12px;}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;color:#fff;padding:14px;border-radius:14px;font-weight:600;font-size:15px;transition:transform 0.2s;}
-.btn:hover{transform:scale(1.02);}
-.wa{background:linear-gradient(135deg,#25D366,#128C7E);animation:pulse 2s infinite;}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5);}70%{box-shadow:0 0 0 12px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
-.tt{background:linear-gradient(90deg,#0f0f0f,#25F4EE,#FE2C55);background-size:200% auto;border:1px solid rgba(255,255,255,0.2);}
-.ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);}
-.gh{background:#24292e;border:1px solid rgba(255,255,255,0.15);}
-footer{text-align:center;font-size:12px;color:#64748b;margin-top:5px;}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(-45deg,#090d16,#13112b,#1e1b4b,#0f172a);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+    color: #fff;
+    min-height: 100vh;
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes bgMove {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+
+/* Floating Background Glow */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    background: #6366f1;
+    top: 10%;
+    left: -100px;
+    animation: floatGlow 8s ease-in-out infinite alternate;
+}
+
+body::after {
+    background: #ec4899;
+    bottom: 10%;
+    right: -100px;
+    animation: floatGlow 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatGlow {
+    from {transform:translate(0,0);}
+    to {transform:translate(60px,-50px);}
+}
+
+.container {
+    max-width: 540px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.box {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    padding: 28px 22px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    animation: popUp 0.8s ease forwards;
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.center {
+    text-align: center;
+}
+
+/* Profile Ring */
+
+.ring {
+    position: relative;
+    width: 126px;
+    height: 126px;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ring::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    padding: 4px;
+    background: conic-gradient(#6366f1,#ec4899,#25F4EE,#6366f1);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    100% {transform:rotate(360deg);}
+}
+
+.avatar {
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #1e1b4b;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+/* Typing Animation */
+
+.typing-text {
+    color: #25F4EE;
+    font-size: 15px;
+    font-weight: 600;
+    min-height: 24px;
+    margin-bottom: 12px;
+}
+
+.cursor {
+    display: inline-block;
+    color: #ec4899;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {opacity:0;}
+}
+
+.glow-badge {
+    display: inline-block;
+    background: linear-gradient(90deg,rgba(99,102,241,0.25),rgba(236,72,153,0.25));
+    color: #e0e7ff;
+    border: 1px solid rgba(165,180,252,0.4);
+    padding: 7px 20px;
+    border-radius: 50px;
+    font-size: 13.5px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    box-shadow: 0 0 15px rgba(99,102,241,0.3);
+    animation: glowPulse 3s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from {box-shadow:0 0 10px rgba(99,102,241,0.3);}
+    to {box-shadow:0 0 22px rgba(236,72,153,0.6);}
+}
+
+.bio {
+    font-size: 14px;
+    color: #cbd5e1;
+    line-height: 1.6;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title i {
+    color: #818cf8;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media(max-width:480px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(99,102,241,0.25);
+    padding: 16px;
+    border-radius: 16px;
+    transition: transform 0.3s,border-color 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #ec4899;
+}
+
+.card h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.card p {
+    font-size: 12.5px;
+    color: #94a3b8;
+    line-height: 1.5;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: transform 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+}
+
+.wa {
+    background: linear-gradient(135deg,#25D366,#128C7E);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {box-shadow:0 0 0 0 rgba(37,211,102,0.5);}
+    70% {box-shadow:0 0 0 12px rgba(37,211,102,0);}
+    100% {box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+
+.tt {
+    background: linear-gradient(90deg,#0f0f0f,#25F4EE,#FE2C55);
+    background-size: 200% auto;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.ig {
+    background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+}
+
+.gh {
+    background: #24292e;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 5px;
+}
+
 </style>
 </head>
+
 <body>
+
 <div class="container">
-  <div class="box center">
-    <div class="ring">
-      <img src="profile.jpg" alt="Mohamed Zahir" class="avatar" onerror="this.src='https://ui-avatars.com'">
-    </div>
-    <h1>Mohamed Zahir</h1>
-    <div class="glow-badge">Developer • Program Designer • Digital Services</div>
-    <p class="bio">Welcome to my official space! I'm Mohamed Zahir from Sri Lanka—a passionate Developer, Program Designer, and trusted provider of high-speed digital & gaming services.</p>
-  </div>
-<div class="box">
-    <div class="title"><i class="fas fa-store"></i> My Digital Services</div>
-    <div class="grid">
-      <div class="card"><h3>🛡️ Premium VPN</h3><p>High-speed, low-ping private servers for seamless browsing & gaming.</p></div>
-      <div class="card"><h3>💎 Free Fire Top-Up</h3><p>Instant & safe Diamond top-ups directly via Player UID (SG Server).</p></div>
-      <div class="card"><h3>👍 FF UID Likes</h3><p>Boost your Free Fire profile likes safely with daily auto-delivery.</p></div>
-      <div class="card"><h3>🚀 Social Boosting</h3><p>Grow your TikTok & Instagram with real-looking followers & likes.</p></div>
-    </div>
-  </div>
 
-  <div class="box">
-    <div class="title"><i class="fas fa-laptop-code"></i> Developer Expertise</div>
-    <div class="grid">
-      <div class="card"><h3>⚙️ Program Design</h3><p>Building automated scripts, Telegram bots, and smart software.</p></div>
-      <div class="card"><h3>☁️ Cloud & Linux</h3><p>Managing secure Linux servers, custom domains, and network tunnels.</p></div>
-    </div>
-  </div>
+    <!-- Profile Section -->
 
-  <div class="box">
-    <div class="title"><i class="fas fa-paper-plane"></i> Order & Connect</div>
-    <div class="links">
-      <a href="https://wa.me/94743820716" target="_blank" class="btn wa"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</a>
-      <a href="https://www.tiktok.com/@mhdzahir112" target="_blank" class="btn tt"><i class="fab fa-tiktok"></i> Follow on TikTok</a>
-      <a href="https://www.instagram.com/mhdzahir340?srtk=aWw4a3UxaWwzNXNm" target="_blank" class="btn ig"><i class="fab fa-instagram"></i> Follow on Instagram</a>
-      <a href="https://github.com/zahir-340" target="_blank" class="btn gh"><i class="fab fa-github"></i> View GitHub Profile</a>
+    <div class="box center">
+
+        <div class="ring">
+            <img src="profile.jpg"
+                 alt="Mohamed Zahir"
+                 class="avatar"
+                 onerror="this.src='https://ui-avatars.com/api/?name=Mohamed+Zahir'">
+        </div>
+
+        <div class="typing-text">
+            <span id="typing"></span><span class="cursor">|</span>
+        </div>
+
+        <h1>Mohamed Zahir</h1>
+
+        <div class="glow-badge">
+            Developer • Program Designer • Digital Services
+        </div>
+
+        <p class="bio">
+            Welcome to my official space! I'm Mohamed Zahir from Sri Lanka—a passionate Developer, Program Designer, and trusted provider of high-speed digital & gaming services.
+        </p>
+
     </div>
-  </div>
-  <footer>© 2026 Mohamed Zahir. All Rights Reserved.</footer>
+
+    <!-- Digital Services -->
+
+    <div class="box">
+
+        <div class="title">
+            <i class="fas fa-store"></i> My Digital Services
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>🛡️ Premium VPN</h3>
+                <p>High-speed, low-ping private servers for seamless browsing & gaming.</p>
+            </div>
+
+            <div class="card">
+                <h3>💎 Free Fire Top-Up</h3>
+                <p>Instant & safe Diamond top-ups directly via Player UID (SG Server).</p>
+            </div>
+
+            <div class="card">
+                <h3>👍 FF UID Likes</h3>
+                <p>Boost your Free Fire profile likes safely with daily auto-delivery.</p>
+            </div>
+
+            <div class="card">
+                <h3>🚀 Social Boosting</h3>
+                <p>Grow your TikTok & Instagram with real-looking followers & likes.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Developer Expertise -->
+
+    <div class="box">
+
+        <div class="title">
+            <i class="fas fa-laptop-code"></i> Developer Expertise
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>⚙️ Program Design</h3>
+                <p>Building automated scripts, Telegram bots, and smart software.</p>
+            </div>
+
+            <div class="card">
+                <h3>☁️ Cloud & Linux</h3>
+                <p>Managing secure Linux servers, custom domains, and network tunnels.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Social Links -->
+
+    <div class="box">
+
+        <div class="title">
+            <i class="fas fa-paper-plane"></i> Order & Connect
+        </div>
+
+        <div class="links">
+
+            <a href="https://wa.me/94743820716" target="_blank" rel="noopener" class="btn wa">
+                <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+            </a>
+
+            <a href="https://www.tiktok.com/@mhdzahir112" target="_blank" rel="noopener" class="btn tt">
+                <i class="fab fa-tiktok"></i> Follow on TikTok
+            </a>
+
+            <a href="https://www.instagram.com/mhdzahir340?srtk=aWw4a3UxaWwzNXNm" target="_blank" rel="noopener" class="btn ig">
+                <i class="fab fa-instagram"></i> Follow on Instagram
+            </a>
+
+            <a href="https://github.com/zahir-340" target="_blank" rel="noopener" class="btn gh">
+                <i class="fab fa-github"></i> View GitHub Profile
+            </a>
+
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Mohamed Zahir. All Rights Reserved.
+    </footer>
+
 </div>
+
+<!-- Typing Animation Script -->
+
+<script>
+const words = [
+    "Developer",
+    "Program Designer",
+    "Digital Creator",
+    "VPN Server Administrator",
+    "Tech Enthusiast"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const typingElement = document.getElementById("typing");
+
+function typeEffect() {
+
+    const currentWord = words[wordIndex];
+
+    if (!deleting) {
+
+        typingElement.textContent =
+            currentWord.substring(0, charIndex + 1);
+
+        charIndex++;
+
+        if (charIndex === currentWord.length) {
+            deleting = true;
+            setTimeout(typeEffect, 1300);
+            return;
+        }
+
+    } else {
+
+        typingElement.textContent =
+            currentWord.substring(0, charIndex - 1);
+
+        charIndex--;
+
+        if (charIndex === 0) {
+            deleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+        }
+
+    }
+
+    setTimeout(typeEffect, deleting ? 55 : 100);
+}
+
+typeEffect();
+</script>
+
 </body>
-</html>  
+</html>
